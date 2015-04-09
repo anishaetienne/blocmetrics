@@ -5,7 +5,7 @@ class AppsController < ApplicationController
   end
 
   def show
-
+    @apps = App.find(params[:id])
   end
 
   def new
