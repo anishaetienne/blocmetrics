@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'apps/index'
+
+  get 'apps/show'
+
+  get 'apps/new'
+
+  get 'apps/edit'
+
   devise_for :users
   get 'welcome/about'
 

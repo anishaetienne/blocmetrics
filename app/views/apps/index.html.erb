@@ -1,0 +1,6 @@
+<h1>My Apps</h1>
+<p>Find me in app/views/apps/index.html.erb</p>
+
+<% @apps.each do |app| %>
+  <p><%= link_to app.app_name%></p>
+<% end %>
