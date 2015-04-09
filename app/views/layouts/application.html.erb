@@ -8,7 +8,98 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="container-fluid">
 
+
+  <!--NAV BAR START -->
+
+
+  <!--- LEFT SIDE -->
+
+  <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    
+      <%= link_to image_tag("logo-sm.png"), root_path, :class=>'navbar-brand logo-nav' %>
+
+    </div>
+
+
+  <!--- RIGHT SIDE -->
+    <div class="col-sm-3 col-md-3 pull-right">
+      <ul class="nav navbar-nav">
+        <% if current_user %>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <%= current_user.name %>! <b class="caret"></b></a>
+              <ul class="dropdown-menu ">
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+           <% else %>
+             <li><%= link_to "Sign In", new_user_session_path %></li> 
+             <li><%= link_to "Register", new_user_registration_path %></li>
+           <% end %>
+ 
+      </ul>
+    
+    </div>
+    
+  </div>
+</div>
+
+<!-- NAV BAR END -->
+
+<!-- CONTAINER START -->
+
+<div class="main">
+
+
+<div class="error center">
+  <% if flash[:notice] %>
+         <div class="alert alert-success">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <%= flash[:notice] %>
+         </div>
+       <% elsif flash[:error] %>
+         <div class="alert alert-danger">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <%= flash[:error] %>
+         </div>
+       <% elsif flash[:alert] %>
+         <div class="alert alert-warning">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+           <%= flash[:alert] %>
+         </div>
+       <% end %>
+  </div>
+     
+  
+  <div class="text-center">
+    <h1>Bootstrap Template</h1>
+    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    <br />
+  </div>
+
+  <div class="text-center">
+    <%= yield %>
+  </div>
+
+  
+  
+</div><!-- /.container -->
+<!-- CONTAINER END -->
 </body>
 </html>
+
+
+
+
+
