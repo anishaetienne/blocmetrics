@@ -2,5 +2,6 @@
 <p>Find me in app/views/apps/index.html.erb</p>
 
 <% @apps.each do |app| %>
-  <p><%= link_to app.app_name%></p>
+  <p><%= link_to app.app_name, app_path(app.id)%></p>
 <% end %>
+
