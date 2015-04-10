@@ -184,7 +184,7 @@ DEPENDENCIES
   faker
   figaro (= 1.0)
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (~> 4.0.3)
   pg
   pundit
   rails (= 4.2.0)

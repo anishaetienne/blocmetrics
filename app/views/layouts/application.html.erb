@@ -8,14 +8,14 @@
 </head>
 <body>
 
+<div id="">
+  <div class="">
   <div class="container-fluid">
 
 
-  <!--NAV BAR START -->
 
 
-  <!--- LEFT SIDE -->
-
+  <!--NAV BAR START 
   <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
     <div class="navbar-header">
 
@@ -27,16 +27,16 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-    
-      <%= link_to image_tag("logo-sm.png"), root_path, :class=>'navbar-brand logo-nav' %>
+      
+      <% if current_user %>
+        <%= link_to image_tag("logo-sm.png"), apps_path, :class=>'navbar-brand logo logo-nav' %>
+      <% else %>
+        <%= link_to image_tag("logo-sm.png"), root_path, :class=>'navbar-brand logo-nav' %>
+      <% end %>
 
       <%= link_to "Browse", apps_path, class: "navbar-text" %>
-
-
     </div>
 
-
-  <!--- RIGHT SIDE -->
     <div class="col-sm-3 col-md-3 pull-right">
       <ul class="nav navbar-nav">
         <% if current_user %>
@@ -50,22 +50,112 @@
              <li><%= link_to "Sign In", new_user_session_path %></li> 
              <li><%= link_to "Register", new_user_registration_path %></li>
            <% end %>
- 
       </ul>
-    
     </div>
-    
   </div>
 </div>
 
-<!-- NAV BAR END -->
+ NAV BAR END 
+ Sidebar
+<% if current_user %>
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                 <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <%= link_to "My Apps", apps_path %>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+            </ul>
+        </div>
+<% end %>
+-->
+
+
+
+<!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <% if current_user %>
+                  <%= link_to image_tag("logo-sm.png"), root_path, :class=>'navbar-brand logo logo-nav' %>
+                <% else %>
+                   <%= link_to image_tag("logo-sm.png"), root_path, :class=>'navbar-brand logo-nav' %>
+                <% end %>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+              <% if current_user %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><%= current_user.name %> &nbsp; <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            
+                            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "fa fa-fw fa-gear" %></li>
+                        </li>
+                    </ul>
+                </li>
+                <% else %>
+                    <li><%= link_to "Sign In", new_user_session_path %></li> 
+                    <li><%= link_to "Register", new_user_registration_path %></li>
+                <% end %>
+            </ul>
+ 
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <% if current_user %>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="">
+                        <a href="#"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> My Apps <i class="fa fa-fw fa-caret-down caret"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <%= link_to "View Apps", apps_path %>
+                            </li>
+                            <li>
+                                <%= link_to "Add New", new_app_path %>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+            <% end %>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+
 
 <!-- CONTAINER START -->
 
-<div class="main">
+<div class="content">
 
 
-<div class="error center">
+<div class="alert">
   <% if flash[:notice] %>
          <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -83,22 +173,14 @@
          </div>
        <% end %>
   </div>
-     
-  
-  <div class="text-center">
-    <h1>Bootstrap Template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    <br />
-  </div>
 
-  <div class="text-center">
+  <div class="loggedin">
     <%= yield %>
   </div>
 
-  
-  
-</div><!-- /.container -->
-<!-- CONTAINER END -->
+</div><!-- CONTAINER END -->
+</div><!-- .WRAP END -->
+</div><!-- #WRAP END -->
 </body>
 </html>
 

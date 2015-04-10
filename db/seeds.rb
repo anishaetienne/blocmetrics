@@ -12,9 +12,10 @@ require 'faker'
  users = User.all
  
  # Create Apps
- 10.times do
+ 60.times do
    App.create!(
     user:   users.sample,
+    description: Faker::Lorem.paragraph(2),
      url:  Faker::Internet.url,
      app_name:   Faker::App.name
    )
