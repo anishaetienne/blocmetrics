@@ -17,16 +17,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 #wrap { 
     width: 900px; 
     margin: 0 auto; 
 }
 
+.right {
+    text-align: right;
+    display:inline-block;
+}
 
-.loggedin {
+
+.user {
   width: 77%;
   margin-left: 300px;
+}
+
+.guest {
+  width: 100%;
 }
 
 
@@ -37,10 +45,41 @@
 .error {
   display:inline-block;
   text-align:center;
-  width:100%;
+ 
 }
 
-.logo {}
+.app-options {
+    position:float;
+}
+
+.alert-user {
+    margin-left: 295px;
+    margin-top: 25px;
+    margin-right: 5%;
+}
+
+.alert-guest {
+    width:100%;
+    margin-top: 25px;
+}
+
+.options {
+    position: float;
+    margin-top: 61px;
+}
+
+.links {
+    text-decoration: none;
+    color: #000000;
+}
+
+.tables-lg {
+    width: 800px;
+}
+
+.tables-sm {
+    width: 300px;
+}
 
 /*!
  * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)

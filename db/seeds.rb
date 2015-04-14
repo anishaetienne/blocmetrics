@@ -20,6 +20,14 @@ require 'faker'
      app_name:   Faker::App.name
    )
  end
+ apps = App.all
+
+ 100.times do
+   Event.create!(
+    app:   apps.sample,
+     event_name:   Faker::Hacker.verb
+   )
+ end
  
 user = User.first
  user.skip_reconfirmation!
@@ -32,5 +40,6 @@ user = User.first
  puts "Seed finished"
  puts "#{User.count} users created"
  puts "#{App.count} apps created"
+ puts "#{Event.count} events created"
 
 
