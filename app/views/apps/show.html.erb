@@ -23,21 +23,23 @@
 </table>
 </div>
 
-<!--
+
 <div class="tables-sm">
 <table class="table table-striped">
   <thead>
-    <td><strong>Events</strong></td>
+    <td><strong>Event_Name</strong></td>
   </thead>
   <tbody>
-  <% @events.each do |event| %>
+  <% @grouped.each do |group| %>
   <tr>
-    <td><%= event.event_name %></td>
+    <td><%= group.event_name %></td>
   </tr>
 <% end %>
 </tbody>
-</table>
-</div> -->
+</table><%= @grouped.count %>
+
+
+</div> 
 
 
 </div>

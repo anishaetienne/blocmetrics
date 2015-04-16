@@ -8,7 +8,9 @@ class AppsController < ApplicationController
   def show
     @apps = App.find(params[:id])
     @events = @apps.events
-    @grouped = @events.group(:event_name).count
+    @grouped = @events.group(:event_name)
+    authorize @apps
+
   end
 
   def new
@@ -37,7 +39,7 @@ class AppsController < ApplicationController
     name = @app.app_name
     authorize @app
     if @app.destroy
-       flash[:notice] = "#{name} successfully!"
+       flash[:notice] = "#{name} deleted successfully!"
        redirect_to @app
      else
        flash[:error] = "There was an issue deleting #{name}"
